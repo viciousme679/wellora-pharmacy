@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087f5b">
+  <title>WELLORA — Your health, thoughtfully delivered</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="announcement">Your wellbeing comes first <span>•</span> Safe, simple pharmacy shopping</div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Wellora home"><span class="brand-mark">✳</span><span>WELLORA<small>PHARMACY & WELLNESS</small></span></a>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav">
+      <a class="active" href="#shop">Shop</a><a href="#categories">Categories</a><a href="#how-it-works">How it works</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="openSearch" aria-label="Focus search">⌕</button>
+      <button class="cart-button" id="openCart">Bag <span id="cartCount">0</span></button>
+      <a class="admin-link" href="admin.html">Admin</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> A BETTER WAY TO FEEL WELL</div>
+        <h1>Care for your<br><em>everyday.</em></h1>
+        <p>Thoughtful essentials, trusted wellness products, and a pharmacy experience designed around you.</p>
+        <div class="hero-buttons"><a class="button primary" href="#shop">Explore products <span>↗</span></a><a class="text-link" href="#how-it-works">How it works <span>→</span></a></div>
+        <div class="hero-proof"><div class="avatars"><span>W</span><span>✳</span><span>+</span></div><div><strong>Care that feels personal</strong><small>Simple shopping. Clear information.</small></div></div>
+      </div>
+      <div class="hero-art" aria-label="Wellora wellness illustration">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-leaf leaf-one">❧</div><div class="art-leaf leaf-two">❧</div>
+        <div class="art-card card-back"><span>WELLNESS</span><div class="capsule"></div></div>
+        <div class="art-bottle"><div class="bottle-cap"></div><div class="bottle-label"><span>✳</span><strong>wellora</strong><small>DAILY CARE</small></div></div>
+        <div class="art-card card-front"><span class="mini-check">✓</span><strong>Feel good<br>about your care.</strong></div>
+        <div class="art-spark spark-one">✦</div><div class="art-spark spark-two">✧</div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div><span>✳</span><p><strong>Carefully selected</strong><small>Everyday essentials</small></p></div>
+      <div><span>⌕</span><p><strong>Easy to find</strong><small>Search by name or type</small></p></div>
+      <div><span>♧</span><p><strong>Prescription-aware</strong><small>Review workflow for restricted items</small></p></div>
+      <div><span>↗</span><p><strong>Simple checkout</strong><small>Clear order summaries</small></p></div>
+    </section>
+
+    <section class="shop-section section-wrap" id="shop">
+      <div class="section-heading">
+        <div><div class="eyebrow">THE WELLORA EDIT</div><h2>Find your essentials.</h2><p>Explore everyday care, selected with wellbeing in mind.</p></div>
+        <a class="text-link desktop-link" href="#shop">Browse all products <span>→</span></a>
+      </div>
+      <div class="shop-tools">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search products, categories..." autocomplete="off"><kbd>⌘ K</kbd></label>
+        <select id="categoryFilter" aria-label="Filter by category"><option value="all">All categories</option><option value="personal-care">Personal care</option><option value="skin-care">Skin care</option><option value="supplement">Supplements</option><option value="baby-care">Baby care</option><option value="hair-care">Hair care</option><option value="medicine">Medicines</option></select>
+        <select id="sortFilter" aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name A–Z</option></select>
+      </div>
+      <div class="category-pills" id="categories">
+        <button class="category-pill selected" data-category="all">All essentials</button><button class="category-pill" data-category="personal-care">Personal care</button><button class="category-pill" data-category="skin-care">Skin care</button><button class="category-pill" data-category="supplement">Supplements</button><button class="category-pill" data-category="baby-care">Baby care</button><button class="category-pill" data-category="medicine">Medicines</button>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="emptyState"><span>⌕</span><h3>No products found</h3><p>Try a different search or category.</p><button class="button secondary" id="resetFilters">Reset filters</button></div>
+    </section>
+
+    <section class="care-banner section-wrap" id="how-it-works">
+      <div class="banner-icon">✳</div><div><div class="eyebrow">YOUR CARE, MADE CLEAR</div><h2>Good care starts with<br>feeling informed.</h2><p>Browse everyday essentials, review product details, and follow a clear order process. Restricted products require prescription review before an order can be approved.</p></div>
+      <div class="banner-steps"><div><span>01</span><p><strong>Explore</strong><small>Find the essentials you need.</small></p></div><div><span>02</span><p><strong>Review</strong><small>Check your bag and any requirements.</small></p></div><div><span>03</span><p><strong>Checkout</strong><small>Place a demo order in a few steps.</small></p></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">✳</span><span>WELLORA<small>PHARMACY & WELLNESS</small></span></a><p>Everyday wellbeing, made simpler.</p><small>Demo storefront for educational use. Not a real pharmacy or medical service.</small><span class="footer-copy">© <span id="year"></span> WELLORA</span></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
+    <div class="drawer-head"><div><span class="eyebrow">YOUR SELECTION</span><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button class="close-button" data-close="cart" aria-label="Close bag">×</button></div>
+    <div class="drawer-content" id="cartItems"></div>
+    <div class="drawer-bottom" id="cartBottom"></div>
+  </aside>
+
+  <section class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal-head"><div><span class="eyebrow">ALMOST THERE</span><h2 id="checkoutTitle">Checkout</h2></div><button class="close-button" data-close="checkout" aria-label="Close checkout">×</button></div>
+    <form id="checkoutForm" class="checkout-form">
+      <div class="checkout-summary" id="checkoutSummary"></div>
+      <div class="form-grid"><label>Full name<input name="name" required placeholder="Your full name"></label><label>Email address<input name="email" type="email" required placeholder="you@example.com"></label><label class="full-width">Delivery address<textarea name="address" required rows="2" placeholder="Street, town/city, state"></textarea></label><label>Phone number<input name="phone" required type="tel" placeholder="Your phone number"></label><label>Payment method<select name="payment"><option value="demo-card">Simulated card payment</option><option value="pay-on-delivery">Pay on delivery (demo)</option></select></label></div>
+      <p class="notice">This is a demonstration checkout. No real payment will be collected and no email will be sent.</p>
+      <button class="button primary full-button" type="submit">Place demo order <span>→</span></button>
+    </form>
+  </section>
+
+  <section class="modal admin-modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="modal-head"><div><span class="eyebrow">STORE MANAGEMENT</span><h2 id="adminTitle">Admin workspace</h2></div><button class="close-button" data-close="admin" aria-label="Close admin">×</button></div>
+    <div class="admin-tabs"><button class="admin-tab active" data-tab="inventory">Inventory</button><button class="admin-tab" data-tab="orders">Orders</button><button class="admin-tab" data-tab="prescriptions">Prescriptions</button></div>
+    <div class="admin-panel" id="inventoryPanel">
+      <div class="admin-toolbar"><div><h3>Product inventory</h3><p>Add products and manage stock.</p></div><button class="button primary small-button" id="addProductBtn">+ Add product</button></div>
+      <form id="productForm" class="product-form hidden"><input name="id" type="hidden"><label>Product name<input name="name" required placeholder="Product name"></label><div class="form-grid"><label>Category<select name="category"><option value="personal-care">Personal care</option><option value="skin-care">Skin care</option><option value="supplement">Supplements</option><option value="baby-care">Baby care</option><option value="hair-care">Hair care</option><option value="medicine">Medicines</option></select></label><label>Price (₦)<input name="price" required type="number" min="0" step="50"></label><label>Stock quantity<input name="stock" required type="number" min="0"></label><label>Restricted item?<select name="restricted"><option value="no">No</option><option value="yes">Yes — prescription required</option></select></label></div><label>Description<textarea name="description" rows="2" required placeholder="Short product description"></textarea></label><div class="form-actions"><button type="button" class="button secondary small-button" id="cancelProduct">Cancel</button><button class="button primary small-button" type="submit">Save product</button></div></form>
+      <div class="inventory-table-wrap"><table class="inventory-table"><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Prescription</th><th>Actions</th></tr></thead><tbody id="inventoryRows"></tbody></table></div>
+    </div>
+    <div class="admin-panel hidden" id="ordersPanel"><div class="admin-toolbar"><div><h3>Customer orders</h3><p>Demo orders placed through checkout.</p></div></div><div id="ordersList"></div></div>
+    <div class="admin-panel hidden" id="prescriptionsPanel"><div class="admin-toolbar"><div><h3>Prescription review</h3><p>Uploaded files are kept in this browser demo only.</p></div></div><div id="prescriptionsList"></div></div>
+    <p class="admin-footnote">Demo admin area: no login, server, or shared database is configured. Data is stored in this browser's local storage.</p>
+  </section>
+
+  <section class="modal prescription-modal" id="prescriptionModal" role="dialog" aria-modal="true" aria-labelledby="prescriptionTitle">
+    <div class="modal-head"><div><span class="eyebrow">PRESCRIPTION REVIEW</span><h2 id="prescriptionTitle">Upload prescription</h2></div><button class="close-button" data-close="prescription" aria-label="Close prescription upload">×</button></div>
+    <p class="modal-intro">This item is marked as prescription-required. Upload a prescription file for the demo review workflow before proceeding.</p>
+    <form id="prescriptionForm"><input type="hidden" name="productId"><div class="upload-area"><span>⇧</span><strong>Choose a file to upload</strong><small>PDF, JPG or PNG • max 5 MB</small><input type="file" name="prescriptionFile" accept=".pdf,.jpg,.jpeg,.png" required></div><label class="consent-check"><input type="checkbox" name="consent" required> I confirm this file is intended for prescription review.</label><button class="button primary full-button" type="submit">Submit for review</button></form>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

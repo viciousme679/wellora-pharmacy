@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f5b"><title>WELLORA | Admin Workspace</title>
+  <link rel="stylesheet" href="css/admin.css"><script src="js/admin.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html" aria-label="Back to WELLORA storefront"><span class="brand-mark">✳</span><span>WELLORA<small>ADMIN WORKSPACE</small></span></a><div class="top-actions"><span class="demo-pill"><i></i> DEMO MODE</span><a class="btn btn-light" href="index.html">← Storefront</a></div></header>
+<main class="shell">
+  <section class="welcome"><div><span class="eyebrow">STORE MANAGEMENT</span><h1>Good day, <em>Admin.</em></h1><p>Your store at a glance. Manage stock, orders and prescription requests.</p></div><div class="welcome-tools"><span id="todayDate" class="date-chip"></span><button class="btn btn-light" id="refreshBtn">↻ Refresh</button></div></section>
+  <section class="stats" aria-label="Store summary">
+    <article class="stat-card"><span class="stat-icon">▦</span><div><small>Total products</small><strong id="statProducts">0</strong><p>Active catalogue</p></div></article>
+    <article class="stat-card"><span class="stat-icon">↗</span><div><small>Total orders</small><strong id="statOrders">0</strong><p id="orderStatNote">All order statuses</p></div></article>
+    <article class="stat-card"><span class="stat-icon">♧</span><div><small>Pending prescriptions</small><strong id="statRx">0</strong><p>Need review</p></div></article>
+    <article class="stat-card"><span class="stat-icon warning-icon">!</span><div><small>Low stock</small><strong id="statLowStock">0</strong><p>5 units or fewer</p></div></article>
+  </section>
+  <section class="workspace">
+    <aside class="sidebar"><span class="side-caption">WORKSPACE</span>
+      <button class="side-tab active" data-tab="inventory"><span>▦</span> Inventory <b id="inventoryBadge">0</b></button>
+      <button class="side-tab" data-tab="orders"><span>↗</span> Orders <b id="ordersBadge">0</b></button>
+      <button class="side-tab" data-tab="prescriptions"><span>♧</span> Prescriptions <b id="rxBadge">0</b></button>
+      <div class="sidebar-note"><span>✳</span><strong>WELLORA</strong><p>Changes are saved in this browser and shared with the storefront on this same browser.</p></div>
+    </aside>
+    <div class="main-panel">
+      <section class="panel" id="inventorySection">
+        <div class="panel-heading"><div><span class="eyebrow">CATALOGUE</span><h2>Product inventory</h2><p>Add products, edit prices and keep stock accurate.</p></div><button class="btn btn-primary" id="addProductBtn">＋ Add product</button></div>
+        <div class="toolbar"><label class="searchbox"><span>⌕</span><input id="inventorySearch" type="search" placeholder="Search name or description…" autocomplete="off"></label><select id="inventoryCategory" aria-label="Filter by category"><option value="all">All categories</option><option value="personal-care">Personal care</option><option value="skin-care">Skin care</option><option value="supplement">Supplements</option><option value="baby-care">Baby care</option><option value="hair-care">Hair care</option><option value="medicine">Medicines</option></select><select id="stockFilter" aria-label="Filter by stock"><option value="all">All stock levels</option><option value="low">Low stock (≤ 5)</option><option value="out">Out of stock</option></select><button class="btn btn-light" id="exportProductsBtn">Export CSV</button></div>
+        <div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>PRICE</th><th>STOCK</th><th>PRESCRIPTION</th><th>ACTIONS</th></tr></thead><tbody id="inventoryRows"></tbody></table></div>
+        <div class="empty-state hidden" id="inventoryEmpty"><span>⌕</span><h3>No products found</h3><p>Try another search or change the filters.</p><button class="btn btn-light" id="clearInventoryFilters">Clear filters</button></div>
+        <div class="panel-foot"><span id="inventoryCount">Showing 0 products</span><button class="text-button" id="resetProductsBtn">Reset demo catalogue</button></div>
+      </section>
+      <section class="panel hidden" id="ordersSection">
+        <div class="panel-heading"><div><span class="eyebrow">FULFILMENT</span><h2>Customer orders</h2><p>Review demo checkouts and update their status.</p></div><select id="orderFilter" aria-label="Filter orders"><option value="all">All statuses</option><option value="Placed (demo)">Placed</option><option value="Accepted">Accepted</option><option value="Rejected">Rejected</option></select></div>
+        <div class="list-toolbar"><span id="ordersCount">0 orders</span><button class="btn btn-light" id="exportOrdersBtn">Export CSV</button></div><div id="ordersList" class="record-list"></div>
+      </section>
+      <section class="panel hidden" id="prescriptionsSection">
+        <div class="panel-heading"><div><span class="eyebrow">SAFETY REVIEW</span><h2>Prescription requests</h2><p>Review demo uploads for restricted products.</p></div><select id="rxFilter" aria-label="Filter prescriptions"><option value="all">All statuses</option><option value="Pending review">Pending review</option><option value="Approved">Approved</option><option value="Rejected">Rejected</option></select></div>
+        <div class="list-toolbar"><span id="rxCount">0 requests</span></div><div id="prescriptionsList" class="record-list"></div>
+      </section>
+    </div>
+  </section>
+  <p class="disclaimer"><strong>Demo limitation:</strong> no secure admin login, server, shared online database, real payments or actual email delivery. Do not store real customer details or medical documents here.</p>
+</main>
+<div class="overlay" id="adminOverlay"></div>
+<section class="edit-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle" aria-hidden="true">
+  <div class="modal-head"><div><span class="eyebrow">PRODUCT DETAILS</span><h2 id="productModalTitle">Add product</h2><p>Fields marked * are required.</p></div><button class="close-button" id="closeProductModal" aria-label="Close dialog">×</button></div>
+  <form id="productForm"><input name="id" type="hidden"><label>Product name *<input name="name" required maxlength="100" placeholder="e.g. Gentle Hydrating Lotion"></label><div class="form-grid"><label>Category *<select name="category" required><option value="personal-care">Personal care</option><option value="skin-care">Skin care</option><option value="supplement">Supplements</option><option value="baby-care">Baby care</option><option value="hair-care">Hair care</option><option value="medicine">Medicines</option></select></label><label>Price (₦) *<input name="price" required type="number" min="0" step="1" placeholder="4500"></label><label>Stock quantity *<input name="stock" required type="number" min="0" step="1" placeholder="20"></label><label>Prescription required?<select name="restricted"><option value="no">No</option><option value="yes">Yes — restricted</option></select></label></div><label>Description *<textarea name="description" required rows="3" maxlength="500" placeholder="Describe this product clearly…"></textarea></label><p class="form-error hidden" id="formError"></p><div class="form-actions"><button type="button" class="btn btn-light" id="cancelProduct">Cancel</button><button type="submit" class="btn btn-primary" id="saveProductBtn">Save product</button></div></form>
+</section>
+<div class="toast" id="adminToast" role="status" aria-live="polite"></div>
+</body></html>
